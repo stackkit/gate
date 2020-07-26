@@ -1,0 +1,14 @@
+{
+  "name": "access-control",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:open": "open coverage/lcov-report/index.html"
+  },
+  "dependencies": {
+    "jest": "^26.1.0"
+  }
+}
