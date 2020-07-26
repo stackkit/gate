@@ -1,7 +1,7 @@
 {
   "name": "access-control",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/gate.js",
   "license": "MIT",
   "scripts": {
     "test": "jest --coverage",
