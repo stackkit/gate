@@ -2,6 +2,8 @@
 
 > A simple gate class that can help with protecting and checking user abilities.
 
+**This package is made to run in nodejs and doesn't support the browser yet**
+
 ### Define the gate rules
 ```js
 import { Gate } from 'gate'

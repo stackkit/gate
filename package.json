@@ -1,5 +1,5 @@
 {
-  "name": "gate",
+  "name": "@stackkit/gate",
   "version": "0.0.1",
   "main": "src/gate.js",
   "repository": "git@github.com:stackkit/gate.git",
