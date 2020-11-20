@@ -2,7 +2,7 @@
 
 > A simple gate class that can help with protecting and checking user abilities.
 
-**This package is made to run in Nodejs because checking the gate access should be done in the backend but it can be used on the client side. For example to show or hide ui elements or protect client side routes*
+**This package is made to run in Nodejs because checking the gate access should be done in the backend but it can be used on the client side. For example to show or hide ui elements or protect client side routes**
 
 ### Define the gate rules
 ```js
