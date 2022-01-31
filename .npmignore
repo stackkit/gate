@@ -7,3 +7,4 @@ rollup.config.js
 .gitignore
 .prettierrc
 jest.config.js
+yarn-error.log

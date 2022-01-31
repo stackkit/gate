@@ -9,7 +9,7 @@ const post = {
 }
 
 it('allows the definition of a rule', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const callback = jest.fn()
 
   const gate = new Gate({ user })
@@ -19,7 +19,7 @@ it('allows the definition of a rule', () => {
 })
 
 it('has a function to check if the action is allowed', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const callback = jest.fn()
 
   const gate = new Gate({ user })
@@ -32,7 +32,7 @@ it('has a function to check if the action is allowed', () => {
 })
 
 it('returns false when a key is not defined', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const callback = jest.fn()
 
   const gate = new Gate({ user })
@@ -46,7 +46,7 @@ it('returns false when a key is not defined', () => {
 })
 
 it('throws a error when a key is not defined', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const callback = jest.fn()
 
   const gate = new Gate({ user })
@@ -57,7 +57,7 @@ it('throws a error when a key is not defined', () => {
 })
 
 it('allows additional context to check against', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const callback = jest.fn()
 
   const gate = new Gate({ user })
@@ -105,7 +105,7 @@ it('passes the extra props to the check function', () => {
 })
 
 it('has a option to run a action before and after the check', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const beforeCallback = jest.fn()
   const callback = jest.fn()
   const afterCallback = jest.fn()
@@ -123,7 +123,7 @@ it('has a option to run a action before and after the check', () => {
 })
 
 it('does a call to the before hook and cancels call to the callback if before is true', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const beforeCallback = jest.fn(() => true)
   const callback = jest.fn(() => false)
 
@@ -139,7 +139,7 @@ it('does a call to the before hook and cancels call to the callback if before is
 })
 
 it('runs the after hook after the normal callback', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const afterCallback = jest.fn(() => true)
   const callback = jest.fn(() => false)
 
@@ -155,7 +155,7 @@ it('runs the after hook after the normal callback', () => {
 })
 
 it('runs the before ook when using the check function and sends the props to the before callback', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const beforeCallback = jest.fn(({ post }) => post.id === 1)
   const callback = jest.fn(() => false)
 
@@ -171,7 +171,7 @@ it('runs the before ook when using the check function and sends the props to the
 })
 
 it('runs the callback and after that it will run the after hook with the result prop and the given props', () => {
-  const key = 'edit-settings'
+  const key = 'edit.settings'
   const afterCallback = jest.fn(({ post }) => post.id === 1)
   const callback = jest.fn(() => false)
 
@@ -184,4 +184,14 @@ it('runs the callback and after that it will run the after hook with the result 
   expect(callback).toHaveBeenCalledTimes(1)
   expect(afterCallback).toHaveBeenCalledTimes(1)
   expect(afterCallback).toHaveBeenCalledWith({ post, result: false, user })
+})
+
+it('can export a scopes array to be used in a jwt token', () => {
+  const callback = jest.fn()
+  const gate = new Gate({ user })
+
+  gate.define('manage.groups', callback)
+  gate.define('manage.namespaces', callback)
+
+  expect(gate.getScopes()).toEqual(['manage.groups', 'manage.namespaces'])
 })

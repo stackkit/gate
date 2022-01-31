@@ -1,4 +1,4 @@
-function findFunctionByKey (key, gates) {
+function findFunctionByKey(key, gates) {
   if (!key) throw Error('The allows function needs a key to check against')
 
   const current = gates[key]
@@ -8,9 +8,9 @@ function findFunctionByKey (key, gates) {
 }
 
 class Gate {
-  constructor ({ user }) {
+  constructor({ user }) {
     this.user = user
-    this.gates = []
+    this.gates = {}
 
     this.beforeCallback = null
     this.afterCallback = null
@@ -31,7 +31,7 @@ class Gate {
   allows(key) {
     let result = false
 
-    if(this.beforeCallback && result !== true) result = this.beforeCallback({ user: this.user })
+    if (this.beforeCallback && result !== true) result = this.beforeCallback({ user: this.user })
 
     const callback = findFunctionByKey(key, this.gates)
     if (!callback) return result
@@ -45,7 +45,7 @@ class Gate {
   check(key, props = {}) {
     let result = false
 
-    if(this.beforeCallback && result !== true) result = this.beforeCallback({ user: this.user, ...props })
+    if (this.beforeCallback && result !== true) result = this.beforeCallback({ user: this.user, ...props })
 
     const callback = findFunctionByKey(key, this.gates)
     if (!callback) return result
@@ -54,6 +54,10 @@ class Gate {
     if (this.afterCallback && result !== true) result = this.afterCallback({ user: this.user, result, ...props })
 
     return result
+  }
+
+  getScopes() {
+    return Object.keys(this.gates)
   }
 }
 
