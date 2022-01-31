@@ -1,6 +1,6 @@
 {
   "name": "@stackkit/gate",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": "src/gate.js",
   "repository": "git@github.com:stackkit/gate.git",
   "author": "larsvankleef <larsvankleef@outlook.com>",
@@ -11,6 +11,6 @@
     "test:open": "open coverage/lcov-report/index.html"
   },
   "devDependencies": {
-    "jest": "^26.2.2"
+    "jest": "^27.4.7"
   }
 }
