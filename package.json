@@ -11,6 +11,7 @@
     "test:open": "open coverage/lcov-report/index.html"
   },
   "devDependencies": {
-    "jest": "^27.4.7"
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12"
   }
 }

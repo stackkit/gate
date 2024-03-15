@@ -31,13 +31,13 @@ class Gate {
   allows(key) {
     let result = false
 
-    if (this.beforeCallback && result !== true) result = this.beforeCallback({ user: this.user })
+    if (this.beforeCallback && result === false) result = this.beforeCallback({ user: this.user })
 
     const callback = findFunctionByKey(key, this.gates)
     if (!callback) return result
 
-    if (result !== true) result = callback({ user: this.user })
-    if (this.afterCallback && result !== true) result = this.afterCallback({ user: this.user, result })
+    if (!result) result = callback({ user: this.user })
+    if (this.afterCallback && !result) result = this.afterCallback({ user: this.user, result })
 
     return result
   }
@@ -45,13 +45,13 @@ class Gate {
   check(key, props = {}) {
     let result = false
 
-    if (this.beforeCallback && result !== true) result = this.beforeCallback({ user: this.user, ...props })
+    if (this.beforeCallback && result === false) result = this.beforeCallback({ user: this.user, ...props })
 
     const callback = findFunctionByKey(key, this.gates)
     if (!callback) return result
 
-    if (result !== true) result = callback({ user: this.user, ...props })
-    if (this.afterCallback && result !== true) result = this.afterCallback({ user: this.user, result, ...props })
+    if (!result) result = callback({ user: this.user, ...props })
+    if (this.afterCallback && !result) result = this.afterCallback({ user: this.user, result, ...props })
 
     return result
   }

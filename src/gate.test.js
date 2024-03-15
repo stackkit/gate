@@ -1,4 +1,4 @@
-const { Gate } = require('../gate')
+const { Gate } = require('./gate')
 
 const user = {
   id: 1
